@@ -1,0 +1,25 @@
+
+
+(async () = {
+    const browser = await puppeteer.launch({
+        headless false,
+        defaultViewport false,
+        userDataDir .tmp
+    });
+    const page = await browser.newPage();
+    await page.goto('httpsblog.ankitsanghvi.in');
+
+
+    const blogHandles = await page.$$('.post-feed  .post-card');
+
+    for(const bloghandle of blogHandles){
+
+
+const title = await page.evaluate((el) = el.querySelector(div  a  header  h2).textContent, bloghandle);
+
+console.log(title);
+
+
+    }
+
+})();
